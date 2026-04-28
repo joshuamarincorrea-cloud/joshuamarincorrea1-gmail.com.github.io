@@ -6,7 +6,6 @@ body {
   padding: 20px;
 }
 
-/* CONTENEDOR PRINCIPAL */
 .container {
   background: rgba(0,0,0,0.6);
   padding: 25px;
@@ -17,16 +16,9 @@ body {
   animation: aparecer 0.5s ease;
 }
 
-/* ANIMACIÓN */
 @keyframes aparecer {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 h1 {
@@ -38,7 +30,6 @@ h1 {
   font-size: 18px;
 }
 
-/* INPUT NOMBRE */
 input {
   padding: 12px;
   width: 80%;
@@ -49,7 +40,6 @@ input {
   font-size: 16px;
 }
 
-/* BOTONES */
 button {
   display: block;
   margin: 10px auto;
@@ -62,27 +52,35 @@ button {
   transition: 0.3s;
 }
 
-/* EFECTO HOVER */
 button:hover {
   background-color: #00c6ff;
   color: black;
   transform: scale(1.05);
 }
 
-/* BOTÓN SIGUIENTE */
 #nextBtn {
   display: none;
   background: #00ffcc;
 }
 
-/* RESULTADO */
 #result {
   margin-top: 15px;
   font-weight: bold;
   font-size: 18px;
 }
 
-/* MENSAJE FINAL */
-.container h1 {
-  color: #00ffcc;
+/* 🔥 LOGO (imagen arriba del título) */
+.logo {
+  display: block;
+  margin: 0 auto 10px auto;
+  width: 100px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+  animation: flotar 2s infinite ease-in-out;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
 }
