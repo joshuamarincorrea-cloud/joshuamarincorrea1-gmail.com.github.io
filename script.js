@@ -3,13 +3,6 @@ let currentLevel = 0;
 let correctAnswers = 0;
 let wrongAnswers = 0;
 
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-
 function startGame() {
   const input = document.getElementById("playerName").value;
 
@@ -54,20 +47,27 @@ function loadLevel() {
   resultEl.innerText = "";
   nextBtn.style.display = "none";
 
-  // 🔥 Mezclar respuestas
-  let answers = [...levels[currentLevel].answers];
-  let correctAnswer = answers[levels[currentLevel].correct];
+  // 🔀 Crear copia con bandera de correcta
+  let answers = levels[currentLevel].answers.map((ans, i) => ({
+    text: ans,
+    isCorrect: i === levels[currentLevel].correct
+  }));
 
-  shuffleArray(answers);
+  // 🔀 Mezclar respuestas (Fisher-Yates)
+  for (let i = answers.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [answers[i], answers[j]] = [answers[j], answers[i]];
+  }
 
+  // 🎮 Renderizar botones
   answers.forEach((answer) => {
     const btn = document.createElement("button");
-    btn.innerText = answer;
+    btn.innerText = answer.text;
 
     btn.onclick = () => {
       document.querySelectorAll("#answers button").forEach(b => b.disabled = true);
 
-      if (answer === correctAnswer) {
+      if (answer.isCorrect) {
         resultEl.innerText = "✅ Correcto";
         correctAnswers++;
       } else {
@@ -123,12 +123,12 @@ function getLearningMessage() {
   const score = (correctAnswers / total) * 100;
 
   if (score >= 80) {
-    return "¡Excelente trabajo! 🎉 Has demostrado una comprensión sólida del movimiento ondulatorio. Ahora sabes que las ondas son perturbaciones que transportan energía sin mover materia, comprendes conceptos clave como la frecuencia, la amplitud y la longitud de onda, y puedes diferenciar entre ondas longitudinales y transversales. Sigue así 💪.";
+    return "¡Excelente trabajo! 🎉 Has demostrado una comprensión sólida del movimiento ondulatorio. Comprendes frecuencia, amplitud y tipos de ondas 💪.";
   } 
   else if (score >= 50) {
-    return "¡Buen esfuerzo! 🙂 Has entendido varios conceptos importantes. Aún puedes reforzar frecuencia, amplitud y tipos de ondas. Con práctica lo dominarás 🚀.";
+    return "¡Buen esfuerzo! 🙂 Vas bien, pero puedes reforzar algunos conceptos clave 🚀.";
   } 
   else {
-    return "No te preocupes 📚. Las ondas transportan energía sin mover materia. Repasa frecuencia, amplitud y longitud de onda y vuelve a intentarlo 💪.";
+    return "Sigue practicando 📚. Repasa frecuencia, amplitud y longitud de onda 💪.";
   }
 }
