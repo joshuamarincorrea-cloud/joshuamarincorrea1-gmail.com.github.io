@@ -3,6 +3,13 @@ let currentLevel = 0;
 let correctAnswers = 0;
 let wrongAnswers = 0;
 
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
 function startGame() {
   const input = document.getElementById("playerName").value;
 
@@ -47,14 +54,20 @@ function loadLevel() {
   resultEl.innerText = "";
   nextBtn.style.display = "none";
 
-  levels[currentLevel].answers.forEach((answer, index) => {
+  // 🔥 Mezclar respuestas
+  let answers = [...levels[currentLevel].answers];
+  let correctAnswer = answers[levels[currentLevel].correct];
+
+  shuffleArray(answers);
+
+  answers.forEach((answer) => {
     const btn = document.createElement("button");
     btn.innerText = answer;
 
     btn.onclick = () => {
       document.querySelectorAll("#answers button").forEach(b => b.disabled = true);
 
-      if (index === levels[currentLevel].correct) {
+      if (answer === correctAnswer) {
         resultEl.innerText = "✅ Correcto";
         correctAnswers++;
       } else {
@@ -110,12 +123,12 @@ function getLearningMessage() {
   const score = (correctAnswers / total) * 100;
 
   if (score >= 80) {
-    return "¡Excelente trabajo! 🎉 Has demostrado una comprensión sólida del movimiento ondulatorio. Ahora sabes que las ondas son perturbaciones que transportan energía sin mover materia, comprendes conceptos clave como la frecuencia, la amplitud y la longitud de onda, y puedes diferenciar entre ondas longitudinales y transversales. Sigue así, vas por muy buen camino en la física 💪.";
+    return "¡Excelente trabajo! 🎉 Has demostrado una comprensión sólida del movimiento ondulatorio. Ahora sabes que las ondas son perturbaciones que transportan energía sin mover materia, comprendes conceptos clave como la frecuencia, la amplitud y la longitud de onda, y puedes diferenciar entre ondas longitudinales y transversales. Sigue así 💪.";
   } 
   else if (score >= 50) {
-    return "¡Buen esfuerzo! 🙂 Has logrado entender varios conceptos importantes del movimiento ondulatorio, como qué es una onda y cómo se comporta. Aún puedes reforzar temas como la frecuencia, la amplitud y los tipos de ondas, pero ya tienes una base sólida. Con un poco más de práctica, dominarás estos temas sin problema 🚀.";
+    return "¡Buen esfuerzo! 🙂 Has entendido varios conceptos importantes. Aún puedes reforzar frecuencia, amplitud y tipos de ondas. Con práctica lo dominarás 🚀.";
   } 
   else {
-    return "No te preocupes, esto es parte del aprendizaje 📚. Las ondas son fenómenos que transportan energía sin mover materia, y conceptos como frecuencia, amplitud y longitud de onda son clave para entenderlas. Te recomiendo repasar estos temas y volver a intentarlo. ¡Seguro mejorarás en el próximo intento! 💪";
+    return "No te preocupes 📚. Las ondas transportan energía sin mover materia. Repasa frecuencia, amplitud y longitud de onda y vuelve a intentarlo 💪.";
   }
 }
