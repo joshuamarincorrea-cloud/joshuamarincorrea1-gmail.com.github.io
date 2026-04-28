@@ -123,12 +123,12 @@ function getLearningMessage() {
   const score = (correctAnswers / total) * 100;
 
   if (score >= 80) {
-    return "¡Excelente trabajo! 🎉 Has demostrado una comprensión sólida del movimiento ondulatorio. Comprendes frecuencia, amplitud y tipos de ondas 💪.";
+    return "¡Excelente trabajo! 🎉 Has demostrado una muy buena comprensión del movimiento ondulatorio. Manejas bien conceptos como la frecuencia, la amplitud y los tipos de ondas 💪, y sabes aplicarlos correctamente Se nota que entiendes el tema y no solo lo memorizas, lo cual es clave para avanzar en física. Sigue practicando y mantén esa actitud, vas por muy buen camino 🚀";
   } 
   else if (score >= 50) {
-    return "¡Buen esfuerzo! 🙂 Vas bien, pero puedes reforzar algunos conceptos clave 🚀.";
+    return "¡Buen esfuerzo! 🙂 Vas por un camino sólido, y se nota que estás entendiendo la base del tema. Sin embargo, aún puedes reforzar algunos conceptos clave 🚀 para ganar más seguridad y precisión en tus respuesta Con un poco más de práctica y repasando esos puntos, lograrás mejorar rápidamente y comprender todo con mayor claridad. Sigue así, que estás cada vez más cerca de dominarlo 💪";
   } 
   else {
-    return "Sigue practicando 📚. Repasa frecuencia, amplitud y longitud de onda 💪.";
+    return "Sigue practicando 📚. Refuerza conceptos clave como la frecuencia, la amplitud y la longitud de onda 💪, ya que son fundamentales para comprender mejor el comportamiento de las ondas. Con un poco de repaso y ejercicios, cada vez te resultará más fácil aplicarlos correctamente 🚀";
   }
 }
