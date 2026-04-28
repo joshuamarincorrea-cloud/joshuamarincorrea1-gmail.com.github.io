@@ -1,86 +1,40 @@
-body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego de Ondas</title>
+  <link rel="stylesheet" href="hola.css">
+</head>
 
-.container {
-  background: rgba(0,0,0,0.6);
-  padding: 25px;
-  border-radius: 15px;
-  max-width: 600px;
-  margin: auto;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-  animation: aparecer 0.5s ease;
-}
+<body>
 
-@keyframes aparecer {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
+<!-- PANTALLA INICIO -->
+<div class="container" id="startScreen">
+  
+  <!-- 🔥 IMAGEN -->
+  <img src="file:///C:/Users/USER/Downloads/hola.jpg" class="logo" alt="logo">
 
-h1 {
-  margin-bottom: 15px;
-}
+  <h1>🌊 Juego de Movimiento Ondulatorio</h1>
 
-.progress {
-  margin-bottom: 10px;
-  font-size: 18px;
-}
+  <input type="text" id="playerName" placeholder="Escribe tu nombre">
+  <button onclick="startGame()">Comenzar</button>
+</div>
 
-input {
-  padding: 12px;
-  width: 80%;
-  border-radius: 10px;
-  border: none;
-  margin-bottom: 15px;
-  text-align: center;
-  font-size: 16px;
-}
+<!-- JUEGO -->
+<div class="container" id="gameScreen" style="display:none;">
+  <h1 id="welcome"></h1>
+  <p class="progress" id="level">Nivel 1</p>
 
-button {
-  display: block;
-  margin: 10px auto;
-  padding: 12px;
-  width: 80%;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: 0.3s;
-}
+  <h2 id="question"></h2>
 
-button:hover {
-  background-color: #00c6ff;
-  color: black;
-  transform: scale(1.05);
-}
+  <div id="answers"></div>
 
-#nextBtn {
-  display: none;
-  background: #00ffcc;
-}
+  <p id="result"></p>
 
-#result {
-  margin-top: 15px;
-  font-weight: bold;
-  font-size: 18px;
-}
+  <button id="nextBtn">Siguiente Nivel</button>
+</div>
 
-/* 🔥 LOGO (imagen arriba del título) */
-.logo {
-  display: block;
-  margin: 0 auto 10px auto;
-  width: 100px;
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
-  animation: flotar 2s infinite ease-in-out;
-}
+<script src="script.js" defer></script>
 
-@keyframes flotar {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-  100% { transform: translateY(0px); }
-}
+</body>
+</html>
