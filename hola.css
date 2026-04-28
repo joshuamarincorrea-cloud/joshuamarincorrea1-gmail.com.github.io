@@ -1,0 +1,88 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.container {
+  background: rgba(0,0,0,0.6);
+  padding: 25px;
+  border-radius: 15px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  animation: aparecer 0.5s ease;
+}
+
+/* ANIMACIÓN */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+h1 {
+  margin-bottom: 15px;
+}
+
+.progress {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+/* INPUT NOMBRE */
+input {
+  padding: 12px;
+  width: 80%;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* BOTONES */
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 12px;
+  width: 80%;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+/* EFECTO HOVER */
+button:hover {
+  background-color: #00c6ff;
+  color: black;
+  transform: scale(1.05);
+}
+
+/* BOTÓN SIGUIENTE */
+#nextBtn {
+  display: none;
+  background: #00ffcc;
+}
+
+/* RESULTADO */
+#result {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* MENSAJE FINAL */
+.container h1 {
+  color: #00ffcc;
+}
